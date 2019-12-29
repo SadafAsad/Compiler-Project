@@ -15,16 +15,19 @@ expr      ({id}|{number})({relop}|{op})({id}|{number})
 
 %%
 
-expr                    return EXPRESSION;
-id	                    return IDENTIFIER;
-number  				return INTEGER;
+expr                    {printf("%s "); return EXPRESSION;}
+id	                    {printf("%s ", yytext); return IDENTIFIER;}
+number  				{printf("%s ", yytext); return INTEGER;}
+op                      {printf("%s ", yytext); return OPERATION}
+relop                   {printf("%s ", yytext); return RELATIONAL_OPERATION}
 [ \t\n]					;
 
 .					printf("unexpected character\n");
 
 %%
 
-int yywrap(void)
-{
-	return 1;
+int yywrap(void){return 1;}
+int main(void){
+    yylex();
+    return 0;
 }

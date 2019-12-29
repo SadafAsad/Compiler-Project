@@ -16,11 +16,11 @@ expr      ({id}|{number})({relop}|{op})({id}|{number})
 
 %%
 
-{expr}                     {return EXPRESSION;}
-{id}	                   {printf("%s is a id", yytext); return IDENTIFIER;}
-{number}  				   {printf("%s is a number", yytext); return NUMBER;}
-{op}                       {printf("%s is a Operation ", yytext); return OPERATION;}
-{relop}                    {printf("%s is a relop", yytext); return RELATIONAL_OPERATION;}
+{expr}                     {printf("%s is an EXPRESSION \n", yytext); return EXPRESSION;}
+{id}	                   {printf("%s is an id \n", yytext); return IDENTIFIER;}
+{number}  				   {printf("%s is a number \n", yytext); return NUMBER;}
+{op}                       {printf("%s is an Operation \n", yytext); return OPERATION;}
+{relop}                    {printf("%s is a relop \n", yytext); return RELATIONAL_OPERATION;}
 {delim}					   ;
 
 .					       printf("unexpected character\n");

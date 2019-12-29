@@ -3,8 +3,8 @@
 %}
 %option nounput yylineno
 
-delim [ \t\n] 
-ws {delim}+ 
+delim     [ \t\n] 
+ws        {delim}+ 
 letter    [A-Za-z] 
 digit     [0-9] 
 id        {letter}({letter}|{digit})* 
@@ -15,12 +15,12 @@ expr      ({id}|{number})({relop}|{op})({id}|{number})
 
 %%
 
-{expr}                   {return EXPRESSION;}
-{id}	                 {printf("%s ", yytext); return IDENTIFIER;}
-{number}  				 {printf("%s ", yytext); return NUMBER;}
-{op}                     {printf("%s ", yytext); return OPERATION;}
-{relop}                  {printf("%s ", yytext); return RELATIONAL_OPERATION;}
-{delim}					 ;
+expr                     {return EXPRESSION;}
+id	                     {printf("%s ", yytext); return IDENTIFIER;}
+number  				 {printf("%s ", yytext); return NUMBER;}
+op                       {printf("%s ", yytext); return OPERATION;}
+relop                    {printf("%s ", yytext); return RELATIONAL_OPERATION;}
+delim					 ;
 
 .					printf("unexpected character\n");
 

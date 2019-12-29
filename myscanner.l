@@ -10,18 +10,24 @@ letter    [A-Za-z]
 digit     [0-9] 
 id        {letter}({letter}|{digit})* 
 number    {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?
-op        [+\-*/]
-relop     [(==)|(>)|(<)|(>=)|(<=)]
 expr      ({id}|{number})({ws})*({relop}|{op})({ws})*({id}|{number}) 
 
 %%
 
-{delim}					   ;
+{expr}                     {printf("%s is an EXPRESSION \n", yytext); return EXPRESSION;}
 {id}	                   {printf("%s is an id \n", yytext); return IDENTIFIER;}
 {number}  				   {printf("%s is a number \n", yytext); return NUMBER;}
-{op}                       {printf("%s is an Operation \n", yytext); return OPERATION;}
-{relop}                    {printf("%s is a relop \n", yytext); return RELATIONAL_OPERATION;}
-{expr}                     {printf("%s is an EXPRESSION \n", yytext); return EXPRESSION;}
+{delim}					   ;
+
+"+"                         {printf("%s plus op\n", yytext); return PLUS;}
+"-"                         {printf("%s plus op\n", yytext); return MINUS;}
+"*"                         {printf("%s plus op\n", yytext); return MULTIPLICATION;}
+"/"                         {printf("%s plus op\n", yytext); return DIVISION;}
+"=="                        {printf("%s plus op\n", yytext); return EQUAL;}
+">"                         {printf("%s plus op\n", yytext); return GT;}
+"<"                         {printf("%s plus op\n", yytext); return LT;}
+">="                        {printf("%s plus op\n", yytext); return GTE;}
+"<="                        {printf("%s plus op\n", yytext); return LTE;}
 
 .					       printf("unexpected character\n");
 

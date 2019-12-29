@@ -1,5 +1,12 @@
 #define EXPRESSION 1
 #define IDENTIFIER 2
 #define NUMBER 3
-#define OPERATION 4
-#define RELATIONAL_OPERATION 5
+#define PLUS 4
+#define MINUS 5
+#define MULTIPLICATION 6 
+#define DIVISION 7
+#define EQUAL 8
+#define GT 9
+#define LT 10
+#define GTE 11
+#define LTE 12

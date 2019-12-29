@@ -15,7 +15,7 @@ expr      ({id}|{number})({relop}|{op})({id}|{number})
 
 %%
 
-expr                     {return EXPRESSION;}
+{expr}                     {return EXPRESSION;}
 id	                     {printf("%s ", yytext); return IDENTIFIER;}
 number  				 {printf("%s ", yytext); return NUMBER;}
 op                       {printf("%s ", yytext); return OPERATION;}

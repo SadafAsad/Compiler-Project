@@ -1,4 +1,5 @@
 %{
+#include <stdio.h>
 #include "myscanner.h"
 %}
 %option nounput yylineno
@@ -9,7 +10,7 @@ letter    [A-Za-z]
 digit     [0-9] 
 id        {letter}({letter}|{digit})* 
 number    {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?
-op        [+-*/]
+op        [+\-*/]
 relop     [(==)|(>)|(<)|(>=)|(<=)]
 expr      ({id}|{number})({relop}|{op})({id}|{number}) 
 

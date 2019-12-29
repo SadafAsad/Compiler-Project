@@ -12,16 +12,16 @@ id        {letter}({letter}|{digit})*
 number    {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?
 op        [+\-*/]
 relop     [(==)|(>)|(<)|(>=)|(<=)]
-expr      ({id}|{number})({relop}|{op})({id}|{number}) 
+expr      ({id}|{number})({ws})*({relop}|{op})({ws})*({id}|{number}) 
 
 %%
 
-{expr}                     {printf("%s is an EXPRESSION \n", yytext); return EXPRESSION;}
+{delim}					   ;
 {id}	                   {printf("%s is an id \n", yytext); return IDENTIFIER;}
 {number}  				   {printf("%s is a number \n", yytext); return NUMBER;}
 {op}                       {printf("%s is an Operation \n", yytext); return OPERATION;}
 {relop}                    {printf("%s is a relop \n", yytext); return RELATIONAL_OPERATION;}
-{delim}					   ;
+{expr}                     {printf("%s is an EXPRESSION \n", yytext); return EXPRESSION;}
 
 .					       printf("unexpected character\n");
 

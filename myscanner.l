@@ -1,3 +1,6 @@
+%{
+#include "myscanner.h"
+%}
 %option nounput yylineno
 
 delim [ \t\n] 
@@ -12,12 +15,12 @@ expr      ({id}|{number})({relop}|{op})({id}|{number})
 
 %%
 
-expr                    {return EXPRESSION;}
-id	                    {printf("%s ", yytext); return IDENTIFIER;}
-number  				{printf("%s ", yytext); return INTEGER;}
-op                      {printf("%s ", yytext); return OPERATION;}
-relop                   {printf("%s ", yytext); return RELATIONAL_OPERATION;}
-[ \t\n]					;
+{expr}                   {return EXPRESSION;}
+{id}	                 {printf("%s ", yytext); return IDENTIFIER;}
+{number}  				 {printf("%s ", yytext); return NUMBER;}
+{op}                     {printf("%s ", yytext); return OPERATION;}
+{relop}                  {printf("%s ", yytext); return RELATIONAL_OPERATION;}
+{delim}					 ;
 
 .					printf("unexpected character\n");
 

@@ -1,2 +1,5 @@
-#define EXPRESSION
-#define IDENTIFIER
+#define EXPRESSION 1
+#define IDENTIFIER 2
+#define NUMBER 3
+#define OPERATION 4
+#define RELATIONAL_OPERATION 5

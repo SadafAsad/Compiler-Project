@@ -16,13 +16,13 @@ expr      ({id}|{number})({relop}|{op})({id}|{number})
 %%
 
 {expr}                     {return EXPRESSION;}
-id	                     {printf("%s ", yytext); return IDENTIFIER;}
-number  				 {printf("%s ", yytext); return NUMBER;}
-op                       {printf("%s ", yytext); return OPERATION;}
-relop                    {printf("%s ", yytext); return RELATIONAL_OPERATION;}
-delim					 ;
+{id}	                   {printf("%s ", yytext); return IDENTIFIER;}
+{number}  				   {printf("%s ", yytext); return NUMBER;}
+{op}                       {printf("%s ", yytext); return OPERATION;}
+{relop}                    {printf("%s ", yytext); return RELATIONAL_OPERATION;}
+{delim}					   ;
 
-.					printf("unexpected character\n");
+.					       printf("unexpected character\n");
 
 %%
 

@@ -29,6 +29,8 @@ expr      ({id}|{number})({relop}|{op})({id}|{number})
 
 int yywrap(void){return 1;}
 int main(void){
-    yylex();
+    while (yylex()){
+        
+    }
     return 0;
 }

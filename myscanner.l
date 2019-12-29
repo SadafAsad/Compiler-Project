@@ -3,19 +3,21 @@
 %}
 %option nounput yylineno
 
-%%
-+                       return EXPRESSION;
--                       return EXPRESSION;
-*                       return EXPRESSION;
-/                       return EXPRESSION;
-==                      return EXPRESSION;
->                       return EXPRESSION;
-<                       return EXPRESSION;
->=                      return EXPRESSION;
-<=                      return EXPRESSION;
+delim [ \t\n] 
+ws {delim}+ 
+letter    [A-Za-z] 
+digit     [0-9] 
+id        {letter}({letter}|{digit})* 
+number    {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?
+op        [+-*/]
+relop     [(==)|(>)|(<)|(>=)|(<=)]
+expr      ({id}|{number})({relop}|{op})({id}|{number}) 
 
-[a-zA-Z][_a-zA-Z0-9]*	return IDENTIFIER;
-[1-9][0-9]*				return INTEGER;
+%%
+
+expr                    return EXPRESSION;
+id	                    return IDENTIFIER;
+number  				return INTEGER;
 [ \t\n]					;
 
 .					printf("unexpected character\n");

@@ -12,7 +12,7 @@
     sudo apt-get install bison
 ```
 ### Windows
-    [Download](sourceforge.net)
+[Download](sourceforge.net)
 ## running
 ```
     flex myscanner.l

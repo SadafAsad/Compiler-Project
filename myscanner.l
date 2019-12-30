@@ -7,30 +7,46 @@
 delim     [ \t\n] 
 ws        {delim}+ 
 letter    [A-Za-z] 
-digit     [0-9] 
-id        ({letter})({letter}|{digit})* 
-number    {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?
-op        [+\-*/]
-relop     [(==)|(>)|(<)|(>=)|(<=)]
-expr      ({id}|{number})({ws})*({relop}|{op})({ws})*({id}|{number}) 
+digit     [0-9]
+id        {letter}({letter}|{digit})*
+number    {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?	
 
 %%
 
-{delim}					   ;
-{id}	                   {printf("%s is an id \n", yytext); return IDENTIFIER;}
-{number}  				   {printf("%s is a number \n", yytext); return NUMBER;}
-{op}                       {printf("%s is an Operation \n", yytext); return OPERATION;}
-{relop}                    {printf("%s is a relop \n", yytext); return RELATIONAL_OPERATION;}
-{expr}                     {printf("%s is an EXPRESSION \n", yytext); return EXPRESSION;}
+{id}	                    {return IDENTIFIER;}
+{number}  				    {return NUMBER;}
 
-.					       printf("unexpected character\n");
+"+"                         {return PLUS;}
+"-"                         {return MINUS;}
+"*"                         {return MULTIPLICATION;}
+"/"                         {return DIVISION;}
+"=="                        {return EQUAL;}
+">"                         {return GT;}
+"<"                         {return LT;}
+">="                        {return GTE;}
+"<="                        {return LTE;}
+
+{delim}					    {return DELIM;}
+.					        printf("unexpected character ----- \n");
 
 %%
 
 int yywrap(void){return 1;}
 int main(void){
-    while (yylex()){
-        
+    int ntoken = yylex();
+    while (ntoken){
+        switch(ntoken){
+            char* vtoken = yytext;
+            case NUMBER:
+                ntoken = yylex();
+                if (ntoken == DELIM){
+                    printf("%s is a number\n", vtoken);
+                }
+                else{
+                    printf("unexpected character\n");
+                }
+        }
+        ntoken = yylex();
     }
     return 0;
 }

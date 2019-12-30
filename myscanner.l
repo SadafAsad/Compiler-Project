@@ -13,8 +13,8 @@ number    {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?
 
 %%
 
-{id}	                    {return IDENTIFIER;}
-{number}  				    {return NUMBER;}
+{id}	                    {printf("%s : id", yytext); return IDENTIFIER;}
+{number}  				    {printf("%s : number", yytext); return NUMBER;}
 
 "+"                        |
 "-"                        |

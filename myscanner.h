@@ -1,6 +1,5 @@
-#define IDENTIFIER 
-#define NUMBER 
-#define OPERATION
-#define RELATIONAL_OPERATION
-#define TYPE
-#define IF
+#define IDENTIFIER 1
+#define NUMBER 2
+#define OPERATION 3
+#define RELATIONAL_OPERATION 4
+#define TYPE 5

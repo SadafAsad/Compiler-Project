@@ -6,3 +6,4 @@
 #define IF 6
 #define ELSE 7
 #define WHILE 8
+#define FOR 9

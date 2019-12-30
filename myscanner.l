@@ -24,40 +24,42 @@ number    {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?
 "if"                        {printf("%s : IF\n", yytext); return IF;}
 "else"                      {printf("%s : ELSE\n", yytext); return ELSE;}
 "while"                     {printf("%s : WHILE\n", yytext); return WHILE;}
+"for"                       {printf("%s : FOR\n", yytext); return FOR;}
 
-"+"                        |
-"-"                        |
-"*"                        |
-"/"                        |
-"="                        {printf("%s : OPERATION\n", yytext); return OPERATION;}
+"+"                         |
+"-"                         |
+"*"                         |
+"/"                         |
+"="                         {printf("%s : OPERATION\n", yytext); return OPERATION;}
 
-"=="                       | 
-">"                        | 
-"<"                        | 
-">="                       | 
-"<="                       {printf("%s : RELATIONAL OPERATION\n", yytext); return RELATIONAL_OPERATION;} 
+"=="                        | 
+">"                         | 
+"<"                         | 
+">="                        | 
+"<="                        {printf("%s : RELATIONAL OPERATION\n", yytext); return RELATIONAL_OPERATION;} 
 
-{delim}					    {return DELIM;}
-.					        printf("unexpected character ----- \n");
+{delim}					    ;
+.					        printf("unexpected character\n");
 
 %%
 
 int yywrap(void){return 1;}
 int main(void){
-    int ntoken = yylex();
-    while (ntoken){
-        switch(ntoken){
-            case NUMBER:
-                ntoken = yylex();
-                if (ntoken == DELIM){
-                    printf("%s is a number\n", yytext);
-                }
-                else{
-                    printf("unexpected character\n");
-                }
-        }
-        ntoken = yylex();
-    }
+    // int ntoken = yylex();
+    // while (ntoken){
+    //     switch(ntoken){
+    //         case NUMBER:
+    //             ntoken = yylex();
+    //             if (ntoken == DELIM){
+    //                 printf("%s is a number\n", yytext);
+    //             }
+    //             else{
+    //                 printf("unexpected character\n");
+    //             }
+    //     }
+    //     ntoken = yylex();
+    // }
+    while(yylex()){}
     return 0;
 }
 

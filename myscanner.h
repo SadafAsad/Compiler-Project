@@ -8,3 +8,5 @@
 #define WHILE 8
 #define FOR 9
 #define SEMICOLON 10
+#define LEFT_PARANTHES 11
+#define RIGHT_PARANTHES 12

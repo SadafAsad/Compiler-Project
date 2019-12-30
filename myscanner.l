@@ -39,6 +39,8 @@ number    {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?
 "<="                        {printf("%s : RELATIONAL OPERATION\n", yytext); return RELATIONAL_OPERATION;} 
 
 ";"                         {printf("%s : SEMICOLON\n", yytext); return SEMICOLON;}
+"("                         {printf("%s : LEFT_PARANTHES\n", yytext); return LEFT_PARANTHES;}
+")"                         {printf("%s : RIGHT_PARANTHES\n", yytext); return RIGHT_PARANTHES;}
 
 {delim}					    ;
 .					        printf("unexpected character\n");

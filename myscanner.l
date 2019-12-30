@@ -13,18 +13,27 @@ number    {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?
 
 %%
 
-{id}	                    {printf("%s : id", yytext); return IDENTIFIER;}
-{number}  				    {printf("%s : number", yytext); return NUMBER;}
+{id}	                    {printf("%s : id\n", yytext); return IDENTIFIER;}
+{number}  				    {printf("%s : number\n", yytext); return NUMBER;}
+
+"int"                       |
+"float"                     |
+"double"                    |
+"char"                      {printf("%s : TYPE\n", yytext); return TYPE;}
+
+"if"                        {printf("%s : IF\n", yytext); return IF;}
+"else"                      {printf("%s : ELSE\n", yytext); return ELSE;}
 
 "+"                        |
 "-"                        |
 "*"                        |
-"/"                        {return OERATION;}
+"/"                        {return OPERATION;}
+
 "=="                       | 
 ">"                        | 
 "<"                        | 
 ">="                       | 
-"<="                       {return RELATION_OPERATION} 
+"<="                       {return RELATIONAL_OPERATION} 
 
 {delim}					    {return DELIM;}
 .					        printf("unexpected character ----- \n");

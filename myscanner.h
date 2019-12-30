@@ -3,3 +3,5 @@
 #define OPERATION 3
 #define RELATIONAL_OPERATION 4
 #define TYPE 5
+#define IF 6
+#define ELSE 7

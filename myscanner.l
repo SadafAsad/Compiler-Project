@@ -36,11 +36,10 @@ int main(void){
     int ntoken = yylex();
     while (ntoken){
         switch(ntoken){
-            char* vtoken = yytext;
             case NUMBER:
                 ntoken = yylex();
                 if (ntoken == DELIM){
-                    printf("%s is a number\n", vtoken);
+                    printf("%s is a number\n", yytext);
                 }
                 else{
                     printf("unexpected character\n");
@@ -50,3 +49,5 @@ int main(void){
     }
     return 0;
 }
+
+

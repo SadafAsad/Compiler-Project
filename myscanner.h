@@ -1,14 +1,6 @@
-#define EXPRESSION 1
-#define IDENTIFIER 2
-#define NUMBER 3
-#define PLUS 4
-#define MINUS 5
-#define MULTIPLICATION 6 
-#define DIVISION 7
-#define EQUAL 8
-#define GT 9
-#define LT 10
-#define GTE 11
-#define LTE 12
-#define DELIM 13
-#define TYPE 14
+#define IDENTIFIER 
+#define NUMBER 
+#define OPERATION
+#define RELATIONAL_OPERATION
+#define TYPE
+#define IF

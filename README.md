@@ -5,17 +5,17 @@
 
 ## installing
 
-### Ubuntu
-```
-    sudo apt-get update
-    sudo apt-get install flex
-    sudo apt-get install bison
-```
-### Windows
+    ### Ubuntu
+        ```
+        sudo apt-get update
+        sudo apt-get install flex
+        sudo apt-get install bison
+        ```
+    ### Windows
 
 ## running
-```
-flex myscanner.l
-gcc lex.yy.c
-cat input.txt | a.exe
-```
+    ```
+    flex myscanner.l
+    gcc lex.yy.c
+    cat input.txt | a.exe
+    ```

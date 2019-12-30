@@ -38,6 +38,8 @@ number    {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?
 ">="                        | 
 "<="                        {printf("%s : RELATIONAL OPERATION\n", yytext); return RELATIONAL_OPERATION;} 
 
+";"                         {printf("%s : SEMICOLON\n", yytext); return SEMICOLON;}
+
 {delim}					    ;
 .					        printf("unexpected character\n");
 

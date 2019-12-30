@@ -7,3 +7,4 @@
 #define ELSE 7
 #define WHILE 8
 #define FOR 9
+#define SEMICOLON 10

@@ -23,17 +23,19 @@ number    {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?
 
 "if"                        {printf("%s : IF\n", yytext); return IF;}
 "else"                      {printf("%s : ELSE\n", yytext); return ELSE;}
+"while"                     {printf("%s : WHILE\n", yytext); return WHILE;}
 
 "+"                        |
 "-"                        |
 "*"                        |
-"/"                        {return OPERATION;}
+"/"                        |
+"="                        {printf("%s : OPERATION\n", yytext); return OPERATION;}
 
 "=="                       | 
 ">"                        | 
 "<"                        | 
 ">="                       | 
-"<="                       {return RELATIONAL_OPERATION} 
+"<="                       {printf("%s : RELATIONAL OPERATION\n", yytext); return RELATIONAL_OPERATION;} 
 
 {delim}					    {return DELIM;}
 .					        printf("unexpected character ----- \n");

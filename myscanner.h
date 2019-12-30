@@ -5,3 +5,4 @@
 #define TYPE 5
 #define IF 6
 #define ELSE 7
+#define WHILE 8

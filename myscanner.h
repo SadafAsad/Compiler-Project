@@ -3,3 +3,4 @@
 #define NUMBER 3
 #define OPERATION 4
 #define RELATIONAL_OPERATION 5
+#define TYPE 6

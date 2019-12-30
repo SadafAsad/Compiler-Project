@@ -11,3 +11,4 @@
 #define GTE 11
 #define LTE 12
 #define DELIM 13
+#define TYPE 14

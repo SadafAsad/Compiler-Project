@@ -16,15 +16,15 @@ number    {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?
 {id}	                    {return IDENTIFIER;}
 {number}  				    {return NUMBER;}
 
-"+"                         {return PLUS;}
-"-"                         {return MINUS;}
-"*"                         {return MULTIPLICATION;}
-"/"                         {return DIVISION;}
-"=="                        {return EQUAL;}
-">"                         {return GT;}
-"<"                         {return LT;}
-">="                        {return GTE;}
-"<="                        {return LTE;}
+"+"                        |
+"-"                        |
+"*"                        |
+"/"                        {return OERATION;}
+"=="                       | 
+">"                        | 
+"<"                        | 
+">="                       | 
+"<="                       {return RELATION_OPERATION} 
 
 {delim}					    {return DELIM;}
 .					        printf("unexpected character ----- \n");

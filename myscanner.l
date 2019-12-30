@@ -13,9 +13,6 @@ number    {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?
 
 %%
 
-{id}	                    {printf("%s : id\n", yytext); return IDENTIFIER;}
-{number}  				    {printf("%s : number\n", yytext); return NUMBER;}
-
 "int"                       |
 "float"                     |
 "double"                    |
@@ -25,6 +22,9 @@ number    {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?
 "else"                      {printf("%s : ELSE\n", yytext); return ELSE;}
 "while"                     {printf("%s : WHILE\n", yytext); return WHILE;}
 "for"                       {printf("%s : FOR\n", yytext); return FOR;}
+
+{id}	                    {printf("%s : id\n", yytext); return IDENTIFIER;}
+{number}  				    {printf("%s : number\n", yytext); return NUMBER;}
 
 "+"                         |
 "-"                         |

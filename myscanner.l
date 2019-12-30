@@ -7,12 +7,14 @@
 delim     [ \t\n] 
 ws        {delim}+ 
 letter    [A-Za-z] 
-digit     [0-9] 
+digit     [0-9]
+id        {letter}({letter}|{digit})*
+number    {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?	
 
 %%
 
-{letter}({letter}|{digit})*	                               {return IDENTIFIER;}
-{digit}+(\.{digit}+)?(E[+\-]?{digit}+)?  				   {return NUMBER;}
+{id}	                    {return IDENTIFIER;}
+{number}  				    {return NUMBER;}
 
 "+"                         {return PLUS;}
 "-"                         {return MINUS;}
@@ -24,7 +26,7 @@ digit     [0-9]
 ">="                        {return GTE;}
 "<="                        {return LTE;}
 
-{delim}					    ;
+{delim}					    {return DELIM;}
 .					        printf("unexpected character ----- \n");
 
 %%
@@ -34,13 +36,14 @@ int main(void){
     int ntoken = yylex();
     while (ntoken){
         switch(ntoken){
+            char* vtoken = yytext;
             case NUMBER:
                 ntoken = yylex();
-                if(ntoken != NUMBER){
-                    printf("unexpected character\n");
+                if (ntoken == DELIM){
+                    printf("%s is a number\n", vtoken);
                 }
                 else{
-                    printf("%s is a number \n", yytext);
+                    printf("unexpected character\n");
                 }
         }
         ntoken = yylex();

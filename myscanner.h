@@ -10,3 +10,4 @@
 #define LT 10
 #define GTE 11
 #define LTE 12
+#define DELIM 13

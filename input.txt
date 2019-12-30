@@ -10,3 +10,5 @@ while (int i >= j){
     }
 }
 
+int 1a;
+int 2;

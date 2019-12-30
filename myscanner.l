@@ -27,7 +27,9 @@ number    {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?
 {number}  				    {printf("%s : number\n", yytext); return NUMBER;}
 
 "+"                         |
+"++"                        |
 "-"                         |
+"--"                        |
 "*"                         |
 "/"                         |
 "="                         {printf("%s : OPERATION\n", yytext); return OPERATION;}
@@ -41,6 +43,8 @@ number    {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?
 ";"                         {printf("%s : SEMICOLON\n", yytext); return SEMICOLON;}
 "("                         {printf("%s : LEFT_PARANTHES\n", yytext); return LEFT_PARANTHES;}
 ")"                         {printf("%s : RIGHT_PARANTHES\n", yytext); return RIGHT_PARANTHES;}
+"{"                         {printf("%s : LEFT_BRACKET\n", yytext); return LEFT_BRACKET;}
+"}"                         {printf("%s : RIGHT_BRACKET\n", yytext); return RIGHT_BRACKET;}
 
 {delim}					    ;
 .					        printf("unexpected character\n");

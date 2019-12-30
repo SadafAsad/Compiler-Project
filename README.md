@@ -2,12 +2,18 @@
 
 ## About
 
-## How it works
-### installing
+
+## installing
+
+### Ubuntu
 ```
-install flex and yacc
+    sudo apt-get update
+    sudo apt-get install flex
+    sudo apt-get install bison
 ```
-### running
+### Windows
+
+## running
 ```
 flex myscanner.l
 gcc lex.yy.c

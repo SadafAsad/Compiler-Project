@@ -12,10 +12,10 @@
     sudo apt-get install bison
 ```
 ### Windows
-
+[Download](sourceforge.net)
 ## running
 ```
-flex myscanner.l
-gcc lex.yy.c
-cat input.txt | a.exe
+    flex myscanner.l
+    gcc lex.yy.c
+    cat input.txt | a.exe
 ```

@@ -1,4 +1,8 @@
 %{
+    
+    /* Hosseinreza Akbari 9533840
+       Sadaf Asadollahi   9532260  */
+
 #include <stdio.h>
 #include "myscanner.h"
 %}

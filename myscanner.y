@@ -57,8 +57,19 @@ optexpr:    expr
             |%empty
             ;
 
-expr:       expr '+' term
-            |expr '-' term
+expr:       rel '=' expr
+            |rel
+            ;
+
+rel:        rel '>' add
+            |rel '<' add
+            |rel '>=' add
+            |rel '<=' add
+            |add
+            ;
+
+add:        add '+' term
+            |add '-' term
             |term
             ;
 

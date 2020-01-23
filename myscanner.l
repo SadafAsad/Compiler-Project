@@ -23,11 +23,11 @@ digit     [0-9]
 "while"                     {return WHILE;}
 "for"                       {return FOR;}
 
-"=="                        | 
-">"                         | 
-"<"                         | 
-">="                        | 
-"<="                        {printf("%s : RELATIONAL OPERATION\n", yytext); return RELATIONAL_OPERATION;} 
+"=="                        {return EQ;} 
+">"                         {return GT;} 
+"<"                         {return LT;} 
+">="                        {return GET;} 
+"<="                        {return LET;}
 
 .					        printf("unexpected character\n");
 

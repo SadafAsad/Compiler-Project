@@ -55,12 +55,30 @@ stms:       stmts stmt
             |%empty
             ;
 
-stmt:       block
-            |expr
+stmt:       expr
+            |IF '(' expr ')' stmt ELSE stmt
+            |WHILE '(' expr ')' stmt
+            |FOR '(' optexpr ';' optexpr ';' optexpr ')' stmt
+            |block
             ;
-            
-expr:       expr '+' term
-            |expr '-' term
+
+optexpr:    expr
+            |%empty
+            ;
+
+expr:       rel '=' expr
+            |rel
+            ;
+
+rel:        rel '>' add
+            |rel '<' add
+            |rel '>=' add
+            |rel '<=' add
+            |add
+            ;
+
+add:        add '+' term
+            |add '-' term
             |term
             ;
 

@@ -60,7 +60,7 @@ IDs:
     |ID '=' expr        {sprintf($$, "%s = %s", $1, $3);}
     ;
 
-stms:       
+stmts:       
     stmts stmt  {;}
     |%empty     {;}
     ;

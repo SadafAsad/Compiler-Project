@@ -15,9 +15,27 @@ void yyerror (char *s);
 
 %%
 
-line    :   assignment ';'       {;}
+line    :    assignment ';'      {;}
         |    exit_command ';'    {exit(EXIT_SUCCESS);}
         |    print exp ';'       {printf("Printing %d\n", $2);} 
         ;  
 
+expr    :   expr '+' term
+        |   expr '-' term
+        |   term
+        ;
+
+term    :   term '*' factor
+        |   term '/' factor
+        |   factor
+        ;
+
+factor  :   '(' expr ')'
+        |   num
+        |   id
+        ;
+
+
 %%
+
+void yyerror(char *s){fprintf(stderr, "%s\n", s);}

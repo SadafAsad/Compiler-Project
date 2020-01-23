@@ -45,17 +45,17 @@ decls:      decls decl
             |%empty
             ;
 
-decl:       INT ID
-            |FLOAT ID
-            |DOUBLE ID
-            |CHAR ID
+decl:       INT ID ';'
+            |FLOAT ID ';'
+            |DOUBLE ID ';'
+            |CHAR ID ';'
             ;
 
 stms:       stmts stmt
             |%empty
             ;
 
-stmt:       expr
+stmt:       expr ';'
             |IF '(' expr ')' stmt ELSE stmt
             |WHILE '(' expr ')' stmt
             |FOR '(' optexpr ';' optexpr ';' optexpr ')' stmt

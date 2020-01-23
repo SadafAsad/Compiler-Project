@@ -1,5 +1,14 @@
 %{
-#include <stdio.h>
+    #include <stdio.h>
+
+	int whileLableCounter = 1;
+	int forLableCounter = 1;
+	int ifLableCounter = 1;
+	int tempVar = 1;
+	int elseLableCounter =1;
+    char strBuffer[16];
+
+
 %}
 
 %start Program

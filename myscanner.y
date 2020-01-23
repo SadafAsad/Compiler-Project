@@ -95,3 +95,12 @@ factor:     '(' expr ')'
 
 %%
 
+
+
+int yywrap(){
+	return 1;
+}
+
+int main(){
+	yyparse();
+}

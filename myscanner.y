@@ -52,7 +52,11 @@ stmt:       expr ';'
             |FOR '(' optexpr ';' optexpr ';' optexpr ')' stmt
             |block
             ;
-            
+
+optexpr:    expr
+            |%empty
+            ;
+
 expr:       expr '+' term
             |expr '-' term
             |term

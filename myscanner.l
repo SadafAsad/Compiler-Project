@@ -16,6 +16,12 @@ digit     [0-9]
 {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?         {strcpy(yylval.num , yytext); return NUM;}
 [+-/*=,;(){}]                                  {return yytext[0];}
 
+"=="                        |
+">"                         |
+"<"                         |
+">="                        |
+"<="                        {strcpy(yylval.relo, yytext); return RELOP;}
+
 "int"                       {return INT;}
 "float"                     {return FLOAT;}
 "double"                    {return DOUBLE;}
@@ -26,11 +32,6 @@ digit     [0-9]
 "while"                     {return WHILE;}
 "for"                       {return FOR;}
 
-"=="                        |
-">"                         |
-"<"                         |
-">="                        |
-"<="                        {strcpy(yylval.relo, yytext); return RELOP;}
 
 .					        printf("unexpected character\n");
 

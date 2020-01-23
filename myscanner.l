@@ -12,7 +12,6 @@ digit     [0-9]
 %%
 
 {delim}+                                        {;} 
-{letter}({letter}|{digit})*                     {strcpy(yylval.id , yytext); return ID;}
 {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?         {strcpy(yylval.num , yytext); return NUM;}
 [+-/*=,;(){}]                                  {return yytext[0];}
 
@@ -32,8 +31,8 @@ digit     [0-9]
 "while"                     {return WHILE;}
 "for"                       {return FOR;}
 
-
-.					        printf("unexpected character\n");
+{letter}({letter}|{digit})*                     {strcpy(yylval.id , yytext); return ID;}
+.					                            printf("unexpected character\n");
 
 %%
 

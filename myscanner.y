@@ -61,24 +61,9 @@ stmt:       expr ';'
             |FOR '(' optexpr ';' optexpr ';' optexpr ')' stmt
             |block
             ;
-
-optexpr:    expr
-            |%empty
-            ;
-
-expr:       rel '=' expr
-            |rel
-            ;
-
-rel:        rel '>' add
-            |rel '<' add
-            |rel '>=' add
-            |rel '<=' add
-            |add
-            ;
-
-add:        add '+' term
-            |add '-' term
+            
+expr:       expr '+' term
+            |expr '-' term
             |term
             ;
 
@@ -96,11 +81,3 @@ factor:     '(' expr ')'
 %%
 
 
-
-int yywrap(){
-	return 1;
-}
-
-int main(){
-	yyparse();
-}

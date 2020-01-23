@@ -1,7 +1,7 @@
 %{
 
 #include "myscanner.tab.h"
-#include<string.h>
+
 
 %}
 
@@ -12,8 +12,8 @@ digit     [0-9]
 %%
 
 {delim}+                                        {;} 
-{letter}({letter}|{digit})*                     {strcpy(yylval.id , yytext); return ID;}
-{digit}+(\.{digit}+)?(E[+\-]?{digit}+)?         {strcpy(yylval.num , yytext); return NUM;}
+{letter}({letter}|{digit})*                     {return ID;}
+{digit}+(\.{digit}+)?(E[+\-]?{digit}+)?         {return NUM;}
 [+-*/=(){};]                                    {return yytext[0];}
 
 "int"                       {return INT;}

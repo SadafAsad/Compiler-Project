@@ -197,7 +197,7 @@ term:
 
 factor:     
     '(' expr ')'        {strcpy($$, $2);}
-    |NUM               {strcpy($$, $1);}
+    |NUM                {strcpy($$, $1);}
     |ID                 {strcpy($$, $1);}
     ;
 

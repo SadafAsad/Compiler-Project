@@ -3,21 +3,15 @@
 #include <stdlib.h>
 %}
 
-%union {int num; char id;}
-%start line
-%token print
-%token exit_command
-%token <num> number
-%token <id> identifier
-%type <num> line exp term
-%type <id> assignment
+%start Start
+
+%token <num> NUM
+%token <id> ID
+%token INT FLOAT DOUBLE char
+%token IF ELSE WHILE FOR
+%token EQ GT LT GET LET
 
 %%
-
-line    :    assignment ';'      {;}
-        |    exit_command ';'    {exit(EXIT_SUCCESS);}
-        |    print exp ';'       {printf("Printing %d\n", $2);} 
-        ;  
 
 expr    :   expr '+' term
         |   expr '-' term
@@ -36,5 +30,3 @@ factor  :   '(' expr ')'
 
 
 %%
-
-void yyerror(char *s){fprintf(stderr, "%s\n", s);}

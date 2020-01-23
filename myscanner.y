@@ -52,11 +52,106 @@ stms:
     ;
 
 stmt:       
-    expr ';'
-    |IF '(' expr ')' stmt ELSE stmt
-    |WHILE '(' expr ')' stmt
-    |FOR '(' optexpr ';' optexpr ';' optexpr ')' stmt
-    |block
+    expr ';'        {printf("");}
+
+    |IF
+    {   
+        printf("IF_BEGIN%d:\n", $1=ifLableCounter++); 
+        printf("{\n");
+    } 
+    '('
+    {   
+        printf("IF_CONDITION%d:\n", $1); 
+        printf("{\n");
+    } 
+    expr ')' 
+    {
+        printf("if (%s==0) goto IF_END%d;\n", $5, $1); 
+        printf("goto IF_CODE%d;\n", $1); 
+        printf("}\n");
+    }
+    {
+        printf("IF_CODE%d:\n", $1);
+    }
+    stmt 
+    {
+		printf("}\n");
+		printf("IF_END%d:\n", $1);
+	}
+    ELSE 
+    {   
+        printf("ELSE_BEGIN%d:\n", $1=elseLableCounter++); 
+        printf("{\n");
+    }
+    {
+        printf("ELSE_CODE%d:\n", $1);
+    } 
+    stmt
+    {
+		printf("}\n");
+		printf("ELSE_END%d:\n", $1);
+	}
+
+    |WHILE
+    {
+		printf("WHILE_BEGIN%d:\n", $1=whileLableCounter++);
+		printf("{\n");
+	} 
+    '(' 
+    {
+		printf("WHILE_CONDITION%d:\n", $1);
+		printf("{\n");
+	}
+    expr ')'
+    {
+		printf("if (%s==0) goto WHILE_END%d;\n", $5, $1);
+		printf("goto WHILE_CODE%d;\n", $1);
+		printf("}\n");
+		printf("WHILE_CODE%d:\n", $1);
+	} 
+    stmt
+    {
+		printf("goto WHILE_CONDITION%d;\n", $1);
+		printf("}\n");
+		printf("WHILE_END%d:\n", $1);
+	}
+
+    |FOR
+    {
+		printf("FOR_BEGIN%d:\n", $1=forLableCounter++);
+		printf("{\n");
+	} '(' optexpr ';' 
+    {
+		printf("FOR_CONDITION%d:\n", $1);
+		printf("{\n");
+	}
+    optexpr 
+    {
+		printf("if(%s==0) goto FOR_END%d;\n", $7, $1);
+		printf("goto FOR_CODE%d;\n", $1);
+		printf("}\n");
+	}
+    ';' 
+    {
+		printf("FOR_STEP%d:\n", $1);
+		printf("{\n");
+	}optexpr
+    {
+		printf("goto FOR_CONDITION%d;\n", $1);
+		printf("}\n");
+	} 
+    ')' 
+    {
+		printf("FOR_CODE%d:\n", $1);
+	}
+    stmt
+    {
+		printf("goto FOR_STEP%d;\n", $1);
+		printf("}\n");
+		printf("FOR_END%d:\n", $1);
+	}
+
+    |block  {;}
     ;
 
 optexpr:    

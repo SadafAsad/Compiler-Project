@@ -1,11 +1,6 @@
 %{
-
 #include <stdio.h>
-
-
 %}
-
-
 
 %start Program
 
@@ -21,7 +16,6 @@
 %token IF ELSE WHILE FOR
 %token EQ GT LT GTE LTE
 
-
 //priorities
 
 %right '='
@@ -29,9 +23,6 @@
 %left LT LTE GT GTE
 %left '-' '+'
 %left '*' '/' 
-
-
-
 
 %%
 
@@ -41,14 +32,14 @@ Program:    block
 block:      '{' decls stms '}'
             ;
 
-decls:      decls decl
-            |%empty
+decls:      INT IDs ';'
+            |FLOAT IDs ';'
+            |DOUBLE IDs ';'
+            |CHAR IDs ';'
             ;
 
-decl:       INT ID ';'
-            |FLOAT ID ';'
-            |DOUBLE ID ';'
-            |CHAR ID ';'
+IDs:        IDs ',' ID
+            |ID
             ;
 
 stms:       stmts stmt
@@ -76,7 +67,6 @@ factor:     '(' expr ')'
             |num
             |id
             ;
-
 
 %%
 

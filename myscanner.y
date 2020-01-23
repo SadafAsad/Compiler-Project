@@ -56,7 +56,7 @@ stms:       stmts stmt
             ;
 
 stmt:       expr
-            |IF '(' expr ')' stmt
+            |IF '(' expr ')' stmt ELSE stmt
             |WHILE '(' expr ')' stmt
             |FOR '(' optexpr ';' optexpr ';' optexpr ')' stmt
             |block

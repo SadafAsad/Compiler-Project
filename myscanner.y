@@ -39,7 +39,7 @@ decls:      INT IDs ';'
             ;
 
 IDs:        IDs ',' ID
-            |ID
+            |ID  
             ;
 
 stms:       stmts stmt

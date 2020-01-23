@@ -14,7 +14,7 @@ digit     [0-9]
 {delim}+                                        {;} 
 {letter}({letter}|{digit})*                     {strcpy(yylval.id , yytext); return ID;}
 {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?         {strcpy(yylval.num , yytext); return NUM;}
-[+-*/=(){};]                                    {return yytext[0];}
+[+-*/=(),{};]                                    {return yytext[0];}
 
 "int"                       {return INT;}
 "float"                     {return FLOAT;}
@@ -26,11 +26,11 @@ digit     [0-9]
 "while"                     {return WHILE;}
 "for"                       {return FOR;}
 
-"=="                        {strcpy(yylval.str, yytext); return EQ;} 
-">"                         {strcpy(yylval.str, yytext); return GT;} 
-"<"                         {strcpy(yylval.str, yytext); return LT;} 
-">="                        {strcpy(yylval.str, yytext); return GET;} 
-"<="                        {strcpy(yylval.str, yytext); return LET;}
+"=="                        |
+">"                         |
+"<"                         |
+">="                        |
+"<="                        {strcpy(yylval.str, yytext); return RELOP;}
 
 .					        printf("unexpected character\n");
 

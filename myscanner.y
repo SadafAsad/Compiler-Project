@@ -14,13 +14,12 @@
 %token <id> ID
 %token INT FLOAT DOUBLE CHAR
 %token IF ELSE WHILE FOR
-%token EQ GT LT GTE LTE
+%token RELOP
 
 //priorities
 
 %right '='
-%left EQ 
-%left LT LTE GT GTE
+%left RELOP
 %left '-' '+'
 %left '*' '/' 
 

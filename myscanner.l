@@ -11,12 +11,12 @@ digit     [0-9]
 {delim}+                                        {;} 
 {letter}({letter}|{digit})*                     {yylval.id = yytext; return id;}
 {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?         {yylval.num = yytext; return num;}
-[+-*/=(){};]                                    {return yytext;}
+[+-*/=(){};]                                    {return *yytext;}
 
 "int"                       |
 "float"                     |
 "double"                    |
-"char"                      {return yytext;}
+"char"                      {return *yytext;}
 
 "if"                        {printf("%s : IF\n", yytext); return IF;}
 "else"                      {printf("%s : ELSE\n", yytext); return ELSE;}

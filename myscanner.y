@@ -58,10 +58,14 @@ stms:       stmts stmt
 stmt:       expr
             |IF '(' expr ')' stmt
             |WHILE '(' expr ')' stmt
-            |
+            |FOR '(' optexpr ';' optexpr ';' optexpr ')' stmt
             |block
             ;
-            
+
+optexpr:    expr
+            |%empty
+            ;
+
 expr:       rel '=' expr
             |rel
             ;

@@ -203,6 +203,10 @@ factor:
 
 %%
 
+void yyerror (char const *s) {
+		
+	
+}
 
 int yywrap(){
 	return 1;

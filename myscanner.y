@@ -3,30 +3,54 @@
 #include <stdlib.h>
 %}
 
-%start Start
+%start Program
 
 %token <num> NUM
 %token <id> ID
-%token INT FLOAT DOUBLE char
+%token INT FLOAT DOUBLE CHAR
 %token IF ELSE WHILE FOR
 %token EQ GT LT GET LET
 
 %%
 
-expr    :   expr '+' term
-        |   expr '-' term
-        |   term
-        ;
+Program:    block
+            ;
 
-term    :   term '*' factor
-        |   term '/' factor
-        |   factor
-        ;
+block:      '{' decls stms '}'
+            ;
 
-factor  :   '(' expr ')'
-        |   num
-        |   id
-        ;
+decls:      decls decl
+            |%empty
+            ;
+
+decl:       INT ID
+            |FLOAT ID
+            |DOUBLE ID
+            |CHAR ID
+            ;
+
+stms:       stmts stmt
+            |%empty
+            ;
+
+stmt:       block
+            |expr
+            ;
+            
+expr:       expr '+' term
+            |expr '-' term
+            |term
+            ;
+
+term:       term '*' factor
+            |term '/' factor
+            |factor
+            ;
+
+factor:     '(' expr ')'
+            |num
+            |id
+            ;
 
 
 %%

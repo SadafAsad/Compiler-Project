@@ -11,17 +11,17 @@ digit     [0-9]
 {delim}+                                        {;} 
 {letter}({letter}|{digit})*                     {yylval.id = yytext; return id;}
 {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?         {yylval.num = yytext; return num;}
-[+-*/=(){};]                                    {return *yytext;}
+[+-*/=(){};]                                    {return yytext[0];}
 
-"int"                       |
-"float"                     |
-"double"                    |
-"char"                      {return *yytext;}
+"int"                       {return INT;}
+"float"                     {return FLOAT;}
+"double"                    {return DOUBLE;}
+"char"                      {return CHAR;}
 
-"if"                        {printf("%s : IF\n", yytext); return IF;}
-"else"                      {printf("%s : ELSE\n", yytext); return ELSE;}
-"while"                     {printf("%s : WHILE\n", yytext); return WHILE;}
-"for"                       {printf("%s : FOR\n", yytext); return FOR;}
+"if"                        {return IF;}
+"else"                      {return ELSE;}
+"while"                     {return WHILE;}
+"for"                       {return FOR;}
 
 "=="                        | 
 ">"                         | 

@@ -8,12 +8,13 @@
 %union{
     int num;
     char id[100];
+    int labelCounter;
 }
 
 %token <num> NUM
 %token <id> ID
+%token <labelCounter> IF ELSE WHILE FOR
 %token INT FLOAT DOUBLE CHAR
-%token IF ELSE WHILE FOR
 %token RELOP
 
 //priorities

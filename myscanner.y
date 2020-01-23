@@ -5,7 +5,15 @@
 
 %}
 
+
+
 %start Program
+
+// for each type we need it in union
+%union{
+    int num;
+    char id[100];
+}
 
 %token <num> NUM
 %token <id> ID

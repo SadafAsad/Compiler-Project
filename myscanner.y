@@ -44,7 +44,7 @@ Program:
     ;
 
 block:      
-    '{' {printf("{\n");} decls stms '}' {printf(";\n}\n");}
+    '{' {printf("{\n");} decls stmts '}' {printf(";\n}\n");}
     ;
 
 decls:      

@@ -1,20 +1,25 @@
 %{
+<<<<<<< HEAD
     
     /* Hosseinreza Akbari 9533840
        Sadaf Asadollahi   9532260  */
 
 #include <stdio.h>
 #include "myscanner.h"
+=======
+#include "y.tab.h"
+>>>>>>> 2b2e53d9eb5ea17884487129df2e506080ea6a61
 %}
 
-delim     [ \t\n] 
-ws        {delim}+ 
+delim     [ \t\n\r] 
 letter    [A-Za-z] 
-digit     [0-9]
-id        {letter}({letter}|{digit})*
-number    {digit}+(\.{digit}+)?(E[+\-]?{digit}+)?	
+digit     [0-9]	
 
 %%
+
+{delim}+                                        {;} 
+{letter}({letter}|{digit})*                     {yylval.id = yytext; return id;}
+{digit}+(\.{digit}+)?(E[+\-]?{digit}+)?         {yylval.num = yytext; return num;}
 
 "int"                       |
 "float"                     |

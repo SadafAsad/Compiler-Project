@@ -19,7 +19,19 @@
 %token <id> ID
 %token INT FLOAT DOUBLE CHAR
 %token IF ELSE WHILE FOR
-%token EQ GT LT GET LET
+%token EQ GT LT GTE LTE
+
+
+//priorities
+
+%right '='
+%left EQ 
+%left LT LTE GT GTE
+%left '-' '+'
+%left '*' '/' 
+
+
+
 
 %%
 

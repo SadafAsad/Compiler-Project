@@ -26,11 +26,11 @@ digit     [0-9]
 "while"                     {return WHILE;}
 "for"                       {return FOR;}
 
-"=="                        {return EQ;} 
-">"                         {return GT;} 
-"<"                         {return LT;} 
-">="                        {return GET;} 
-"<="                        {return LET;}
+"=="                        {strcpy(yylval.str, yytext); return EQ;} 
+">"                         {strcpy(yylval.str, yytext); return GT;} 
+"<"                         {strcpy(yylval.str, yytext); return LT;} 
+">="                        {strcpy(yylval.str, yytext); return GET;} 
+"<="                        {strcpy(yylval.str, yytext); return LET;}
 
 .					        printf("unexpected character\n");
 

@@ -40,6 +40,7 @@ decls:      INT IDs ';'
 
 IDs:        IDs ',' ID
             |ID
+            |ID '=' expr
             ;
 
 stms:       stmts stmt
@@ -57,7 +58,7 @@ optexpr:    expr
             |%empty
             ;
 
-expr:       rel '=' expr
+expr:       ID '=' expr
             |rel
             ;
 

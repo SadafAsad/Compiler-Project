@@ -6,17 +6,21 @@
 
 // for each type we need it in union
 %union{
-    int num;
-    char id[100];
-    int labelCounter;
+    char relo[200];
+	int labelCounter;
+	char id[200];
+	char num[200];
+	char nont[200];
 }
 
 %token <num> NUM
 %token <id> ID
 %token <labelCounter> IF ELSE WHILE FOR
+%token <relo> RELOP
 %token INT FLOAT DOUBLE CHAR
-%token RELOP
 
+
+%type <nont> decls IDs optexpr expr rel add term factor
 //priorities
 
 %right '='

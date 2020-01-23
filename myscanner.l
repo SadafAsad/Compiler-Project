@@ -30,7 +30,7 @@ digit     [0-9]
 ">"                         |
 "<"                         |
 ">="                        |
-"<="                        {strcpy(yylval.str, yytext); return RELOP;}
+"<="                        {strcpy(yylval.relo, yytext); return RELOP;}
 
 .					        printf("unexpected character\n");
 

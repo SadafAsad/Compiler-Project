@@ -204,3 +204,10 @@ factor:
 %%
 
 
+int yywrap(){
+	return 1;
+}
+
+int main(){
+	yyparse();
+}

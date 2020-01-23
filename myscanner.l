@@ -22,9 +22,6 @@ digit     [0-9]
 "while"                     {printf("%s : WHILE\n", yytext); return WHILE;}
 "for"                       {printf("%s : FOR\n", yytext); return FOR;}
 
-{id}	                    {printf("%s : id\n", yytext); return IDENTIFIER;}
-{number}  				    {printf("%s : number\n", yytext); return NUMBER;}
-
 "+"                         |
 "-"                         |
 "*"                         |
@@ -43,7 +40,6 @@ digit     [0-9]
 "{"                         {printf("%s : LEFT_BRACE\n", yytext); return LEFT_BRACE;}
 "}"                         {printf("%s : RIGHT_BRACE\n", yytext); return RIGHT_BRACE;}
 
-{delim}					    ;
 .					        printf("unexpected character\n");
 
 %%

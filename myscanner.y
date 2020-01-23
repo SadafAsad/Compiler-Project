@@ -55,8 +55,11 @@ stms:       stmts stmt
             |%empty
             ;
 
-stmt:       block
-            |expr
+stmt:       expr
+            |IF '(' expr ')' stmt
+            |WHILE '(' expr ')' stmt
+            |
+            |block
             ;
             
 expr:       expr '+' term

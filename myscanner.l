@@ -9,8 +9,8 @@ digit     [0-9]
 %%
 
 {delim}+                                        {;} 
-{letter}({letter}|{digit})*                     {yylval.id = yytext; return id;}
-{digit}+(\.{digit}+)?(E[+\-]?{digit}+)?         {yylval.num = yytext; return num;}
+{letter}({letter}|{digit})*                     {yylval.id = yytext; return ID;}
+{digit}+(\.{digit}+)?(E[+\-]?{digit}+)?         {yylval.num = yytext; return NUM;}
 [+-*/=(){};]                                    {return yytext[0];}
 
 "int"                       {return INT;}

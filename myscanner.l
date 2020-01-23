@@ -36,12 +36,4 @@ digit     [0-9]
 
 %%
 
-int yywrap(void){return 1;}
-int main(void){
-
-    while(yylex()){}
-    return 0;
-    
-}
-
 

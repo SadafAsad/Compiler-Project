@@ -62,94 +62,98 @@ stmt:
 
     |IF
     {   
-        printf("IF_BEGIN%d:\n", $1=ifLableCounter++); 
+        printf("IF_BEGIN_%d:\n", $1=ifLableCounter++); 
         printf("{\n");
     } 
     '('
     {   
-        printf("IF_CONDITION%d:\n", $1); 
+        printf("IF_CONDITION_%d:\n", $1); 
         printf("{\n");
     } 
     expr ')' 
     {
-        printf("if (%s==0) goto ELSE_CODE%d;\n", $5, $1); 
-        printf("goto IF_CODE%d;\n", $1); 
+        printf("if (%s==0) goto ELSE_CODE_%d;\n", $5, $1); 
+        printf("goto IF_CODE_%d;\n", $1); 
         printf("}\n");
     }
     {
-        printf("IF_CODE%d:\n", $1);
+        printf("IF_CODE_%d:\n", $1);
     }
     stmt 
     {
-        printf("goto ELSE_END%d;\n", $1);
+        //"IF" Ran then jump to end of "ELSE"
+
+        printf("goto ELSE_END_%d;\n", $1);
 	}
     ELSE 
     {
-        printf("ELSE_CODE%d:\n", $1);
+        //"IF" didnt run and "ELSE" run
+        printf("ELSE_CODE_%d:\n", $1);
     } 
     stmt
     {
-		printf("ELSE_END%d:\n", $1);
+        //"ELSE" ran jump to end of "ELSE"
+		printf("ELSE_END_%d:\n", $1);
         printf("}\n");
 	}
 
     |WHILE
     {
-		printf("WHILE_BEGIN%d:\n", $1=whileLableCounter++);
+		printf("WHILE_BEGIN_%d:\n", $1=whileLableCounter++);
 		printf("{\n");
 	} 
     '(' 
     {
-		printf("WHILE_CONDITION%d:\n", $1);
+		printf("WHILE_CONDITION_%d:\n", $1);
 		printf("{\n");
 	}
     expr ')'
     {
-		printf("if (%s==0) goto WHILE_END%d;\n", $5, $1);
-		printf("goto WHILE_CODE%d;\n", $1);
+		printf("if (%s==0) goto WHILE_END_%d;\n", $5, $1);
+		printf("goto WHILE_CODE_%d;\n", $1);
 		printf("}\n");
-		printf("WHILE_CODE%d:\n", $1);
+		printf("WHILE_CODE_%d:\n", $1);
 	} 
     stmt
     {
-		printf("goto WHILE_CONDITION%d;\n", $1);
+		printf("goto WHILE_CONDITION_%d;\n", $1);
 		printf("}\n");
-		printf("WHILE_END%d:\n", $1);
+		printf("WHILE_END_%d:\n", $1);
 	}
 
     |FOR
     {
-		printf("FOR_BEGIN%d:\n", $1=forLableCounter++);
+		printf("FOR_BEGIN_%d:\n", $1=forLableCounter++);
 		printf("{\n");
 	} '(' optexpr ';' 
     {
-		printf("FOR_CONDITION%d:\n", $1);
+		printf("FOR_CONDITION_%d:\n", $1);
 		printf("{\n");
 	}
     optexpr 
     {
-		printf("if(%s==0) goto FOR_END%d;\n", $7, $1);
-		printf("goto FOR_CODE%d;\n", $1);
+		printf("if(%s==0) goto FOR_END_%d;\n", $7, $1);
+		printf("goto FOR_CODE_%d;\n", $1);
 		printf("}\n");
 	}
     ';' 
     {
-		printf("FOR_STEP%d:\n", $1);
+		printf("FOR_STEP_%d:\n", $1);
 		printf("{\n");
 	}optexpr
     {
-		printf("goto FOR_CONDITION%d;\n", $1);
+		printf("goto FOR_CONDITION_%d;\n", $1);
 		printf("}\n");
 	} 
     ')' 
     {
-		printf("FOR_CODE%d:\n", $1);
+		printf("FOR_CODE_%d:\n", $1);
 	}
     stmt
     {
-		printf("goto FOR_STEP%d;\n", $1);
+		printf("goto FOR_STEP_%d;\n", $1);
 		printf("}\n");
-		printf("FOR_END%d:\n", $1);
+		printf("FOR_END_%d:\n", $1);
 	}
 
     |block  {;}

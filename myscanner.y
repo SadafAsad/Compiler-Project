@@ -70,7 +70,7 @@ stmt:
     } 
     expr ')' 
     {
-        printf("if (%s==0) goto IF_END%d;\n", $5, $1); 
+        printf("if (%s==0) goto ELSE_CODE%d;\n", $5, $1); 
         printf("goto IF_CODE%d;\n", $1); 
         printf("}\n");
     }
@@ -79,21 +79,16 @@ stmt:
     }
     stmt 
     {
-		printf("}\n");
-		printf("IF_END%d:\n", $1);
+        printf("goto ELSE_END%d;\n", $1);
 	}
     ELSE 
-    {   
-        printf("ELSE_BEGIN%d:\n", $1=elseLableCounter++); 
-        printf("{\n");
-    }
     {
         printf("ELSE_CODE%d:\n", $1);
     } 
     stmt
     {
-		printf("}\n");
 		printf("ELSE_END%d:\n", $1);
+        printf("}\n");
 	}
 
     |WHILE

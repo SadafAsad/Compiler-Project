@@ -29,7 +29,7 @@
 %token INT FLOAT DOUBLE CHAR
 
 
-%type <nont> decls IDs optexpr expr rel add term factor
+%type <nont> IDs optexpr expr rel add term factor
 //priorities
 
 %right '='
@@ -44,21 +44,10 @@ Program:
     ;
 
 block:      
-    '{' {printf("{\n");} decls stmts '}' {printf("\n}\n");}
+    '{' {printf("{\n");} stmts '}' {printf("\n}\n");}
     ;
 
-decls:      
-    INT IDs ';'         {printf("int %s", $2);}
-    |FLOAT IDs ';'      {printf("float %s", $2);}
-    |DOUBLE IDs ';'     {printf("double %s", $2);}
-    |CHAR IDs ';'       {printf("char %s", $2);}
-    ;
 
-IDs:        
-    IDs ',' ID          {sprintf($$, "%s, %s", $1, $3);} 
-    |ID                 {sprintf($$, "%s",$1);}
-    |ID '=' expr        {sprintf($$, "%s = %s;\n", $1, $3);}
-    ;
 
 stmts:       
     stmts stmt  {;}
@@ -66,7 +55,8 @@ stmts:
     ;
 
 stmt:       
-    expr ';'        {printf("");}
+    decl ';'	{printf(";\n");}
+	|expr ';'	{printf("");}
 
     |IF
     {   
@@ -167,6 +157,20 @@ stmt:
 
     |block  {;}
     ;
+
+decl:
+	INT IDs			{printf("int %s", $2);}
+	|DOUBLE IDs		{printf("double %s", $2);}
+    |FLOAT IDs		{printf("float %s", $2);}
+    |CHAR IDs		{printf("char %s", $2);}
+	;
+
+IDs:    
+	IDs ',' ID				{sprintf($$, "%s, %s", $1, $3);} 
+	|IDs ',' ID '=' expr	{sprintf($$, "%s, %s = %s", $1, $3, $5);}
+	|ID						{sprintf($$, "%s",$1);}
+	|ID '=' expr			{sprintf($$, "%s = %s", $1, $3);}
+	;
 
 optexpr:    
     expr            {strcpy($$, $1);}

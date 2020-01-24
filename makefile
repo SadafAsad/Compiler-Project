@@ -4,7 +4,7 @@ test: all clean
 all: flex bison myscanner.tab.h
 	gcc myscanner.tab.c lex.yy.c -w
 
-flex: lexer.l
+flex: myscanner.l
 	flex -i myscanner.l
 
 bison: myscanner.y

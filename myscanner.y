@@ -44,7 +44,7 @@ Program:
     ;
 
 block:      
-    '{' {printf("{\n");} decls stmts '}' {printf(";\n}\n");}
+    '{' {printf("{\n");} decls stmts '}' {printf("\n}\n");}
     ;
 
 decls:      
@@ -57,7 +57,7 @@ decls:
 IDs:        
     IDs ',' ID          {sprintf($$, "%s, %s", $1, $3);} 
     |ID                 {sprintf($$, "%s",$1);}
-    |ID '=' expr        {sprintf($$, "%s = %s", $1, $3);}
+    |ID '=' expr        {sprintf($$, "%s = %s;\n", $1, $3);}
     ;
 
 stmts:       

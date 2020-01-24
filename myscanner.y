@@ -22,6 +22,8 @@
 	char nont[200];
 }
 
+
+
 %token <num> NUM
 %token <id> ID
 %token <labelCounter> IF ELSE WHILE FOR
